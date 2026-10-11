@@ -1,38 +1,130 @@
 {
-  "name": "Alex Developer",
-  "title": "Senior Go Engineer",
-  "email": "alex@example.com",
-  "location": "San Francisco, CA",
-  "github": "github.com/alexdev",
-  "linkedin": "linkedin.com/in/alexdev",
-  "summary": "Passionate backend engineer with 6+ years of experience building scalable distributed systems using Go and cloud-native tech.",
+  "name": "Osman Yasin",
+  "title": "Software Developer",
+  "email": "osmanyasin0077@gmail.com",
+  "location": "Johannesburg, South Africa",
+  "phone": "+27 74 279 1194",
+  "summary": "As a software developer with a strong foundation in software development principles, I excel in applying critical thinking and problem-solving to produce quality software solutions. I am confident in my ability to work both independently and collaboratively, thriving in challenging environments. My dedication to delivering high-quality work, coupled with my strong problem-solving skills, makes me a valuable asset to any project[cite: 1].",
   "experience": [
     {
-      "company": "CloudScale Inc.",
-      "role": "Senior Backend Engineer",
-      "period": "2022 - Present",
+      "company": "Entelect (placed at FNB Backbase)",
+      "role": "Software Developer",
+      "period": "Jun 2025 – Current",
+      "location": "Johannesburg, South Africa",
       "highlights": [
-        "Architected high-throughput microservices in Go handling 10k+ req/sec.",
-        "Reduced cloud infrastructure costs by 30% through container optimization."
+        "Fixed a blocking Spring Cloud Gateway issue, unblocking the team’s ability to test integration APIs[cite: 1].",
+        "Delivered features across the full stack (Java, Kotlin, Angular, MySQL)[cite: 1].",
+        "Improved CI/CD pipeline, reducing friction in build and deployment workflows[cite: 1].",
+        "Built internal developer tooling in Go, saving the team recurring manual effort[cite: 1]."
       ]
     },
     {
-      "company": "DataFlow Systems",
-      "role": "Software Engineer",
-      "period": "2019 - 2022",
+      "company": "Dariel (placed at Discovery Bank)",
+      "role": "Software Developer",
+      "period": "Nov 2022 – May 2025",
+      "location": "Johannesburg, South Africa",
       "highlights": [
-        "Developed REST and gRPC APIs for real-time telemetry processing.",
-        "Implemented automated CI/CD pipelines via GitHub Actions."
+        "Led the Hippo CMS upgrade from v14 to v15, including a JDK 8 to JDK 11 migration and Linux server deployments[cite: 1].",
+        "Migrated the Payment Gateway integration with BankServ, reverse engineering portions of the codebase where source was unavailable[cite: 1].",
+        "Exposed the organisation’s first mTLS-secured endpoint in collaboration with another Discovery Group team[cite: 1].",
+        "Automated a recurring manual workflow for client data updates, leading two junior developers through design and delivery[cite: 1].",
+        "Identified and resolved a concurrency architecture flaw, coordinating with affected teams on the redesign[cite: 1].",
+        "Built Spring Boot microservices for SFTP-based CSV ingestion and FIC PDF processing and reporting[cite: 1].",
+        "Mentored a junior developer and conducted graduate technical interviews[cite: 1].",
+        "Achieved 3rd place in a company-wide hackathon[cite: 1]."
+      ]
+    },
+    {
+      "company": "Dariel (placed at Peregrine Capital)",
+      "role": "Junior Full Stack Developer",
+      "period": "Mar 2022 – Oct 2022",
+      "location": "Johannesburg, South Africa",
+      "highlights": [
+        "Contributed to an aws-cdk v1 to v2 upgrade, rewriting deprecated APIs across the infrastructure codebase[cite: 1].",
+        "Built and exposed backend endpoints (C# .NET) and the corresponding frontend screens (Angular) for address and contact details[cite: 1].",
+        "Refactored shared code into a monorepo library consumed by both the client portal and back-office application[cite: 1].",
+        "Managed AWS infrastructure changes via the CDK repository[cite: 1]."
+      ]
+    },
+    {
+      "company": "University of Johannesburg",
+      "role": "Maths Tutor",
+      "period": "Feb 2020 – Dec 2020",
+      "location": "Johannesburg, South Africa",
+      "highlights": [
+        "Assisted first-year mathematics students during practical sessions[cite: 1].",
+        "Provided one-on-one tutoring at designated time slots[cite: 1].",
+        "Facilitated revision sessions at Saturday extra classes[cite: 1].",
+        "Marked practicals and class tests[cite: 1]."
       ]
     }
   ],
-  "skills": [
-    "Go",
-    "Docker",
-    "Kubernetes",
-    "PostgreSQL",
-    "gRPC",
-    "HTMX",
-    "AWS"
+  "education": [
+    {
+      "institution": "University of Johannesburg",
+      "degree": "BSc Honours in Information Technology",
+      "period": "2023",
+      "details": "On-site, part-time • Formally accredited by the British Computer Society (BCS, The Chartered Institute for IT)[cite: 1]"
+    },
+    {
+      "institution": "University of Johannesburg",
+      "degree": "BSc Computer Science",
+      "period": "2021",
+      "details": "Passing Grade: Cum Laude • Team Award: 3rd place (3rd year project) • Individual Award: Best Programmer (3rd year practicals)[cite: 1]"
+    },
+    {
+      "institution": "UJ Metropolitan Academy",
+      "degree": "Matric",
+      "period": "2018",
+      "details": "Grade Average: 79% • Bachelor's pass • Distinctions: Physical Science, Mathematics, Accounting, and Economics[cite: 1]"
+    }
+  ],
+  "skills": {
+    "Programming Languages": [
+      "Java",
+      "Kotlin",
+      "Go",
+      "C#",
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Bash"
+    ],
+    "Frameworks & Libraries": [
+      "Spring Boot",
+      "Spring Framework",
+      "Spring Cloud Gateway",
+      "Liquibase",
+      "Apache Camel",
+      ".NET",
+      "Entity Framework",
+      "Angular",
+      "RxJS & NgRx",
+      "Express JS",
+      "AWS CDK"
+    ],
+    "Tools & Platforms": [
+      "Swagger",
+      "Docker",
+      "Kubernetes",
+      "OpenShift",
+      "PostgreSQL",
+      "MySQL",
+      "MS SQL",
+      "IBM MQ",
+      "MoveIt SFTP",
+      "AWS",
+      "Node JS",
+      "Postman & Newman",
+      "Bruno",
+      "CI/CD pipelines"
+    ]
+  },
+  "hobbies": [
+    "Football",
+    "Chess",
+    "Padel",
+    "Swimming",
+    "Anime & Manga"
   ]
 }

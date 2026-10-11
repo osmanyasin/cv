@@ -5,25 +5,65 @@ import (
 	"html/template"
 	"log"
 	"os"
+	"path/filepath"
 )
 
 type Experience struct {
 	Company    string   `json:"company"`
 	Role       string   `json:"role"`
 	Period     string   `json:"period"`
+	Location   string   `json:"location"`
 	Highlights []string `json:"highlights"`
 }
 
+type Education struct {
+	Institution string `json:"institution"`
+	Degree      string `json:"degree"`
+	Period      string `json:"period"`
+	Details     string `json:"details"`
+}
+
 type Resume struct {
-	Name       string       `json:"name"`
-	Title      string       `json:"title"`
-	Email      string       `json:"email"`
-	Location   string       `json:"location"`
-	Github     string       `json:"github"`
-	Linkedin   string       `json:"linkedin"`
-	Summary    string       `json:"summary"`
-	Experience []Experience `json:"experience"`
-	Skills     []string     `json:"skills"`
+	Name       string              `json:"name"`
+	Title      string              `json:"title"`
+	Email      string              `json:"email"`
+	Location   string              `json:"location"`
+	Phone      string              `json:"phone"`
+	Summary    string              `json:"summary"`
+	Experience []Experience        `json:"experience"`
+	Education  []Education         `json:"education"`
+	Skills     map[string][]string `json:"skills"`
+	Hobbies    []string            `json:"hobbies"`
+}
+
+func copyDir(src, dst string) error {
+	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		rel, err := filepath.Rel(src, path)
+		if err != nil {
+			return err
+		}
+		targetPath := filepath.Join(dst, rel)
+		if info.IsDir() {
+			return os.MkdirAll(targetPath, info.Mode())
+		}
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		return os.WriteFile(targetPath, data, info.Mode())
+	})
+}
+
+func copyStaticPDF(src, dst string) {
+	input, err := os.ReadFile(src)
+	if err != nil {
+		log.Println("Note: No data/resume.pdf found. Skipping PDF copy step.")
+		return
+	}
+	_ = os.WriteFile(dst, input, 0644)
 }
 
 func main() {
@@ -43,7 +83,7 @@ func main() {
 		log.Fatalf("Failed to create dist directory: %v", err)
 	}
 
-	// 3. Generate HTML
+	// 3. Render HTML
 	tmpl, err := template.ParseFiles("templates/index.html")
 	if err != nil {
 		log.Fatalf("Failed to parse HTML template: %v", err)
@@ -59,19 +99,9 @@ func main() {
 		log.Fatalf("Failed to execute template: %v", err)
 	}
 
-	// 4. Generate PDF (Placeholder / Asset copy step)
-	// Tip: You can generate your PDF using a library like github.com/johnfercher/maroto
-	// or drop a pre-compiled clean resume.pdf into your repo for the build script to copy over.
+	// 4. Copy static PDF if present
 	copyStaticPDF("data/resume.pdf", "dist/resume.pdf")
 
-	log.Println("Successfully built static site and assets in /dist 🚀")
-}
-
-func copyStaticPDF(src, dst string) {
-	input, err := os.ReadFile(src)
-	if err != nil {
-		log.Println("Warning: No static PDF found to copy. Make sure dist/resume.pdf can be served.")
-		return
-	}
-	_ = os.WriteFile(dst, input, 0644)
+	_ = copyDir("templates/static", "dist/static")
+	log.Println("Build successful! Output generated in /dist ✅️")
 }

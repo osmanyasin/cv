@@ -1,65 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-white text-zinc-900">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.Name}} - Resume</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="color-scheme" content="light dark">
+    <title>{{.Name}} — Resume</title>
+    <link rel="stylesheet" href="./static/css/style.css">
 </head>
-<body class="max-w-3xl mx-auto px-6 py-12 font-sans">
+<body>
+<main class="container">
 
-<!-- Header -->
-<header class="border-b border-zinc-200 pb-6 mb-8 flex justify-between items-start">
-    <div>
-        <h1 class="text-3xl font-bold tracking-tight">{{.Name}}</h1>
-        <p class="text-lg text-zinc-600 mt-1">{{.Title}}</p>
-        <p class="text-sm text-zinc-500 mt-2">{{.Location}} • <a href="mailto:{{.Email}}"
-                                                                 class="underline">{{.Email}}</a></p>
-    </div>
-    <div>
-        <a href="./resume.pdf"
-           class="inline-block bg-zinc-900 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-800 transition">
-            Download PDF
-        </a>
-    </div>
-</header>
-
-<!-- Summary -->
-<section class="mb-10">
-    <h2 class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-3">About</h2>
-    <p class="text-zinc-700 leading-relaxed">{{.Summary}}</p>
-</section>
-
-<!-- Experience -->
-<section class="mb-10">
-    <h2 class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-4">Experience</h2>
-    <div class="space-y-6">
-        {{range .Experience}}
+    <!-- Header -->
+    <header>
         <div>
-            <div class="flex justify-between items-baseline">
-                <h3 class="font-semibold text-zinc-900">{{.Role}} <span class="text-zinc-400 font-normal">at {{.Company}}</span>
-                </h3>
-                <span class="text-sm text-zinc-500">{{.Period}}</span>
-            </div>
-            <ul class="list-disc list-inside mt-2 space-y-1 text-zinc-700 text-sm">
-                {{range .Highlights}}
-                <li>{{.}}</li>
-                {{end}}
+            <h1>{{.Name}}</h1>
+            <p class="job-title">{{.Title}}</p>
+            <ul class="contact-info">
+                <li>{{.Location}}</li>
+                <li><a href="mailto:{{.Email}}">{{.Email}}</a></li>
+                <li>{{.Phone}}</li>
             </ul>
         </div>
-        {{end}}
-    </div>
-</section>
+        <a href="./resume.pdf" class="btn-download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 4v11"/>
+                <path d="m7 11 5 5 5-5"/>
+                <path d="M5 20h14"/>
+            </svg>
+            Download PDF
+        </a>
+    </header>
 
-<!-- Skills -->
-<section>
-    <h2 class="text-xs font-semibold tracking-wider text-zinc-400 uppercase mb-3">Skills</h2>
-    <div class="flex flex-wrap gap-2">
-        {{range .Skills}}
-        <span class="bg-zinc-100 text-zinc-800 text-xs font-medium px-2.5 py-1 rounded">{{.}}</span>
-        {{end}}
-    </div>
-</section>
+    <!-- About -->
+    <section>
+        <h2>About me</h2>
+        <div class="section-body">
+            <p class="summary">{{.Summary}}</p>
+        </div>
+    </section>
 
+    <!-- Experience -->
+    <section>
+        <h2>Experience</h2>
+        <div class="section-body timeline">
+            {{range .Experience}}
+            <article class="job">
+                <div class="job-head">
+                    <h3>{{.Role}}</h3>
+                    <span class="period-badge">{{.Period}}</span>
+                    <p class="job-meta">
+                        <span class="company-name">{{.Company}}</span>{{if .Location}}<span class="job-location">{{.Location}}</span>{{end}}
+                    </p>
+                </div>
+                <ul class="highlights">
+                    {{range .Highlights}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </article>
+            {{end}}
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section>
+        <h2>Education</h2>
+        <div class="section-body">
+            {{range .Education}}
+            <div class="education-item">
+                <div>
+                    <strong>{{.Degree}}</strong>
+                    <div class="education-details">{{.Institution}} — {{.Details}}</div>
+                </div>
+                <span class="period-badge">{{.Period}}</span>
+            </div>
+            {{end}}
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section>
+        <h2>Skills</h2>
+        <div class="section-body">
+            {{range $category, $skills := .Skills}}
+            <div class="skills-category">
+                <span class="category-title">{{$category}}</span>
+                <div class="badge-container">
+                    {{range $skills}}
+                    <span class="badge">{{.}}</span>
+                    {{end}}
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </section>
+
+    <!-- Hobbies -->
+    <section>
+        <h2>Interests</h2>
+        <div class="section-body">
+            <div class="badge-container">
+                {{range .Hobbies}}
+                <span class="badge badge-hobby">{{.}}</span>
+                {{end}}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Osman Yasin. Built with Go & GitHub Pages.</p>
+    </footer>
+
+</main>
 </body>
 </html>
