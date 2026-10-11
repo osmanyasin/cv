@@ -67,7 +67,6 @@ func copyStaticPDF(src, dst string) {
 }
 
 func main() {
-	// 1. Read JSON data
 	data, err := os.ReadFile("data/resume.json")
 	if err != nil {
 		log.Fatalf("Failed to read resume.json: %v", err)
@@ -78,12 +77,10 @@ func main() {
 		log.Fatalf("Failed to parse JSON: %v", err)
 	}
 
-	// 2. Ensure dist directory exists
 	if err := os.MkdirAll("dist", 0755); err != nil {
 		log.Fatalf("Failed to create dist directory: %v", err)
 	}
 
-	// 3. Render HTML
 	tmpl, err := template.ParseFiles("templates/index.html")
 	if err != nil {
 		log.Fatalf("Failed to parse HTML template: %v", err)
@@ -99,9 +96,7 @@ func main() {
 		log.Fatalf("Failed to execute template: %v", err)
 	}
 
-	// 4. Copy static PDF if present
 	copyStaticPDF("data/resume.pdf", "dist/resume.pdf")
-
 	_ = copyDir("templates/static", "dist/static")
 	log.Println("Build successful! Output generated in /dist ✅️")
 }
