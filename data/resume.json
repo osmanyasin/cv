@@ -1,0 +1,38 @@
+{
+  "name": "Alex Developer",
+  "title": "Senior Go Engineer",
+  "email": "alex@example.com",
+  "location": "San Francisco, CA",
+  "github": "github.com/alexdev",
+  "linkedin": "linkedin.com/in/alexdev",
+  "summary": "Passionate backend engineer with 6+ years of experience building scalable distributed systems using Go and cloud-native tech.",
+  "experience": [
+    {
+      "company": "CloudScale Inc.",
+      "role": "Senior Backend Engineer",
+      "period": "2022 - Present",
+      "highlights": [
+        "Architected high-throughput microservices in Go handling 10k+ req/sec.",
+        "Reduced cloud infrastructure costs by 30% through container optimization."
+      ]
+    },
+    {
+      "company": "DataFlow Systems",
+      "role": "Software Engineer",
+      "period": "2019 - 2022",
+      "highlights": [
+        "Developed REST and gRPC APIs for real-time telemetry processing.",
+        "Implemented automated CI/CD pipelines via GitHub Actions."
+      ]
+    }
+  ],
+  "skills": [
+    "Go",
+    "Docker",
+    "Kubernetes",
+    "PostgreSQL",
+    "gRPC",
+    "HTMX",
+    "AWS"
+  ]
+}
